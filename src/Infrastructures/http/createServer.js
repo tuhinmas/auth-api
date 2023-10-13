@@ -10,20 +10,33 @@ const createServer = async (container) => {
     port: process.env.PORT,
   });
 
-  await server.register([
-    {
+  await server.register([{
       plugin: users,
-      options: { container },
+      options: {
+        container
+      },
     },
     {
       plugin: authentications,
-      options: { container },
+      options: {
+        container
+      },
     },
   ]);
 
+  server.route({
+    method: 'GET',
+    path: '/',
+    handler: () => ({
+      value: 'Hello world!',
+    }),
+  });
+
   server.ext('onPreResponse', (request, h) => {
     // mendapatkan konteks response dari request
-    const { response } = request;
+    const {
+      response
+    } = request;
 
     if (response instanceof Error) {
       // bila response tersebut error, tangani sesuai kebutuhan
