@@ -1,7 +1,7 @@
 {
     "user": "postgres",
     "password": "password",
-    "host": "localhost",
+    "host": "auth-api.ckfmslniib5i.ap-southeast-1.rds.amazonaws.com",
     "port": 5432,
     "database": "authapi_test"
   }
